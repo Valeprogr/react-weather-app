@@ -54,12 +54,12 @@ console.log(API_KEY)
             </form>
 
             {
-                weather !== undefined ?
+                weather.data !== undefined ?
                 <div>
                     <DisplayWeather data={weather} />
                 </div>
                 :
-                null
+              null
             }
         </div>
     );

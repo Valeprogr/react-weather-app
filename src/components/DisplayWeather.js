@@ -7,8 +7,11 @@ const DisplayWeather = (props) => {
     return (
         <div className='displayWeather'>
             <div className='maincard'>
-                <span className='classTitle'>
-                    {props.data.data.name}, {props.data.data.sys.country} Weather.
+                <span className='cardTitle'>
+                    {props.data.data.name}, {props.data.data.sys.country}. Weather.
+                </span>
+                <span className='cardsubtitle'>
+                    As of {new Date().toLocaleTimeString()}
                 </span>
             </div>
         </div>
