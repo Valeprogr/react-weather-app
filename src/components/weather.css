@@ -9,11 +9,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
     color: var(--text-color);
     background-color: var(--secodary-bg-color);
     text-shadow: var(--text-shadow);
-    height: auto;
 
 }
 form{
@@ -59,7 +57,7 @@ button:focus {
 }
 
 body{
-    background-color: var(--main-bg-color);
+    background-color: var(--secodary-bg-color);
 }
 
 input{

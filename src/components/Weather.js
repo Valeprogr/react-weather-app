@@ -44,7 +44,9 @@ console.log(API_KEY)
     }
     return (
         <div className='weather'>
-            <span className='title'>Weather App</span>
+            <span className='title'>
+            <h1>Weather App</h1>
+            </span>
             <br/>
 
             <form>

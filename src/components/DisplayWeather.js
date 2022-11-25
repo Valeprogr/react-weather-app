@@ -2,18 +2,133 @@ import React from 'react';
 import "./displayWeather.css"
 
 const DisplayWeather = (props) => {
+    const iconUrl = `http://openweathermap.org/img/wn/${props.data.data.code !== 404 ? props.data.data.weather[0].icon : null}.png`;
     console.log("displayWeather");
     console.log(props.data)
     return (
         <div className='displayWeather'>
-            <div className='maincard'>
+           {
+props.data.data.code !== 404? (
+<React.Fragment>
+<div className='maincard'>
                 <span className='cardTitle'>
-                    {props.data.data.name}, {props.data.data.sys.country}. Weather.
+                   <h2> {props.data.data.name}, {props.data.data.sys.country}. Weather.</h2>
                 </span>
                 <span className='cardsubtitle'>
                     As of {new Date().toLocaleTimeString()}
                 </span>
+                <h1>{Math.floor(props.data.data.main.temp - 273.15)}
+                    <sup>o</sup>
+                </h1>
+                {" "}
+                <span className='weather-main'>
+                    {props.data.data.weather[0].main}
+                </span>
+                <img src={iconUrl} alt='actual weather' className='weather-icon' />
+                <span className='weather-description'>
+                {" "}
+                    {props.data.data.weather[0].description}
+                </span>
+                
+                <div className='weather-details'>
+                    <div className='section1'>
+                        <table>
+                            <tr>
+                                <td>
+                                    <h4>High/Low</h4>
+                                </td>
+                                <td>
+                                    <span>
+                                        {Math.floor(props.data.data.main.temp_max - 273.15)} /{" "}
+                                        {Math.floor(props.data.data.main.temp_min - 273.15)} <sup>o</sup>C
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4>Humidity</h4>
+                                </td>
+                                <td>
+                                    <span>
+                                        {props.data.data.main.humidity} %
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4>Pressure</h4>
+                                </td>
+                                <td>
+                                    <span>
+                                        {props.data.data.main.pressure} hPa
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4>Visibility</h4>
+                                </td>
+                                <td>
+                                    <span>
+                                        {props.data.data.main.visibility / 1000} Km
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div className='section2'>
+                        <table>
+                            <tr>
+                                <td>
+                                    <h4>High/Low</h4>
+                                </td>
+                                <td>
+                                    <span>
+                                        {Math.floor(props.data.data.wind.speed * 18)/5}Km/hr
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4>Wind direction</h4>
+                                </td>
+                                <td>
+                                    <span>
+                                        {props.data.data.wind.deg} <sup>o</sup>deg
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4>Sunrise</h4>
+                                </td>
+                                <td>
+                                    <span>
+                                        {new Date(props.data.data.sys.sunrise* 1000).toLocaleTimeString()} 
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4>Sunset</h4>
+                                </td>
+                                <td>
+                                    <span>
+                                    {new Date(props.data.data.sys.sunset *1000).toLocaleTimeString()}
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
+</React.Fragment>
+):(
+<div className='maincard'>
+    <h2>{props.data.data.message}</h2>
+</div>
+          )}
         </div>
     );
 }
