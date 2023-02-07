@@ -7,14 +7,16 @@
 
 
 .displayWeather{
-    background-color: var(--main-bg-color);
+    background-color: white;
     width: 700px;
     height: 250px;
     padding: 20px;
     margin: 20px;
     border: 2px solid var(--text-color);
-    color: var(--text-color);
+    color: black;
     border-radius: 15px;
+    text-shadow: none;
+    opacity: 85%;
 }
 .weather-details{
     display: flex;
@@ -25,11 +27,53 @@
     justify-content: center;
     border: 2px solid --text-color;
     border-radius: 15px;
-    padding: 10px;
-    background-color: #97D2EC;
+    padding: 32px;
+    background-color:white;
     
 }
 h4{
     text-decoration: underline;
     font-weight: bold;
+}
+.maincard{
+    /* display: flex; */
+    /* border:  1px solid red; */
+    height: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+    .weather{
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: start;
+       
+       
+    }
+    .displayWeather{
+        width: auto;
+        justify-content: center;
+        
+
+    }
+    .weather-details{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: auto;
+        margin-left: 10px;
+        margin-right: 0px;
+        font-size: 22px;
+        height: 100%;
+        margin:20px;
+        padding: 22px;;
+        
+    }
+
+    .maincard{
+        width: auto;
+        justify-content: center;
+        justify-self: center;
+        
+    }
 }
